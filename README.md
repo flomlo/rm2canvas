@@ -13,8 +13,8 @@ These features make it ideal for streaming a course too many students. That's wh
 
 ### Usage
 1) enable SSH access on your remarkable
-2) If using a rm2: Place the screenshotter GO programm (see https://gist.github.com/owulveryck/4007cbf14e0028f373e4294f66c4ad07) in `/home/root/screenshot.arm` on your device. Warning: Please be aware of the risks.
-If using a rm1: TODO (should be quite risk free, just read /dev/fb0?)
+2a) If using a rm2: Place the screenshotter GO programm (see https://gist.github.com/owulveryck/4007cbf14e0028f373e4294f66c4ad07) in `/home/root/screenshot.arm` on your device. Warning: Please be aware of the risks of running go code as root on a potentially brickable device.
+2b) If using a rm1: TODO (should be quite risk free, just read /dev/fb0?)
 3) Install `imagemagick` as we both need the `convert` and the `compare` tool as well as `websockets` via pip.
 4) start the server via `python3 server.py HOSTADDRESS`, where `HOSTADDRESS` could be either `localhost` or some IPv4/IPv6 address. This opens a (maybe publicly reachable!) HTTP Server on Port 7622. Be aware that the file request sanitzier was programmed at 02:53 in the morning.
 
