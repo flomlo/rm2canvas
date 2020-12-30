@@ -20,6 +20,20 @@ If using a rm1: TODO (should be quite risk free, just read /dev/fb0?)
 
 
 
+
+### ToDo:
+- enable rm1 support. Should be almost trivial, I just don't have any device to test this with.
+- remove canvas strokes with a smooth transition instead of abruptly deleting them (eyecandy)
+- Hunt bugs. Please report any you encounter!
+- Fix rotation.
+
+#### Planned bigger features
+- detect swipes to new pages and save a backlog of pages in the html
+- Make setup easier
+- Switch to a "real" http server, not something made in websockets. 
+- Make HTTPS support easier
+
+
 ### Background
 
 #### Building upon others work:
@@ -52,16 +66,3 @@ Simultanious streaming to ~20 devices was already tested.
 
 
 
-
-
-#### ToDo:
-- enable rm1 support. Should be almost trivial, I just don't have any device to test this with.
-- remove canvas strokes with a smooth transition instead of abruptly deleting them (eyecandy)
-- Hunt bugs. Please report any you encounter!
-- Fix rotation.
-
-#### Planned bigger features
-- detect swipes to new pages and save a backlog of pages in the html
-- Make setup easier
-- Switch to a "real" http server, not something made in websockets. 
-- Make HTTPS support easier
