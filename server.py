@@ -55,7 +55,7 @@ async def screenshotter(rm_model):
 async def diff_detector(f1,f2):
     if f2 is None:
         return 1878*1404
-    command = f"compare -metric AE {f1} {f2} null"
+    command = f"compare -metric AE {f1} {f2} /dev/null"
     compare = await asyncio.create_subprocess_shell(command, stderr=asyncio.subprocess.PIPE)
     return int((await compare.communicate())[1])
 
