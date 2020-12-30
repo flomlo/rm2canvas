@@ -34,6 +34,7 @@ Input parsing was easy thanks to the information here: https://github.com/cansel
 I (flomlo) also recevied generous amounts of help of my friends
 - thejonny (https://github.com/thejonny/)  (help with python/websockets/JavaScript)
 - Nikolai Wüstemann (https://wuestemann.net/) (help with CSS/JavaScript/HTML)
+Thank you ♥
 
 
 #### Working principles
@@ -56,8 +57,9 @@ Simultanious streaming to ~20 devices was already tested.
 - enable rm1 support. Should be almost trivial, I just don't have any device to test this with.
 - remove canvas strokes with a smooth transition instead of abruptly deleting them (eyecandy)
 - Hunt bugs. Please report any you encounter!
+- Fix rotation.
 
-#### Planned features
+#### Planned bigger features
 - detect swipes to new pages and save a backlog of pages in the html
 - Make setup easier
 - Switch to a "real" http server, not something made in websockets. 
