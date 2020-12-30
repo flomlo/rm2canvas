@@ -34,6 +34,7 @@ Input parsing was easy thanks to the information here: https://github.com/cansel
 I (flomlo) also recevied generous amounts of help of my friends
 - thejonny (https://github.com/thejonny/)  (help with python/websockets/JavaScript)
 - Nikolai Wüstemann (https://wuestemann.net/) (help with CSS/JavaScript/HTML)
+
 Thank you ♥
 
 
