@@ -1,6 +1,6 @@
 # rm2canvas
 A html canvas based screencasting server for the reMarkable (1/2) digital paper systems.
-It draws live on the canvas from the remarkables wacom touchscreen input but also fetches ground truth via occasional screenshots from the remarkable, trying to (seamlessly) integrate these two.
+It draws live on the canvas from the remarkables touchscreen input, but also fetches ground truth via occasional screenshots from the remarkable, trying to (seamlessly) integrate these two.
 
 
 ### Why is it cool?
