@@ -22,7 +22,8 @@ def check_model(rm_hostname, rm_user="root"):
 #########################################################################
 # Ground truth collection
 #########################################################################
-async def screenshotter(rm_model):
+async def screenshotter(rm_model, rm_host='remarkable', rm_user='root'):
+    assert rm_user == 'root', "screenshotting currently needs root rights on the remarkable"
     filepath_old = None
     while True:
         ts = int(round(time.time()*10**3) ) #% 10**7)
@@ -33,9 +34,11 @@ async def screenshotter(rm_model):
                 # basically just take a look at /dev/fb0?
                 raise NotImplementedError
             elif rm_model == "reMarkable 2.0":
+                # 1) make screenshot 2) copy screenshot to here 3) "enhance" screenshot (matter of taste) 
+                # 4) copy screenshot to default background picture location for static html
                 command = f'''
-                    ssh remarkable './screenshot.arm /proc/$(pidof xochitl)/mem' 2&> /dev/null
-                    scp -q remarkable:/home/root/image.png {filepath}
+                    ssh {rm_user}@{rm_host} './screenshot.arm /proc/$(pidof xochitl)/mem' 2&> /dev/null
+                    scp -q {rm_user}@{rm_host}:/home/root/image.png {filepath}
                     convert {filepath} -gaussian-blur 3x0.45 -channel RGBA {filepath}
                     cp {filepath} ./images/bg.png
                     '''
@@ -146,12 +149,12 @@ def run(rm_host="remarkable", host="localhost", port=7622, rm_user="root"):
     start_server = websockets.serve(websocket_handler, host, port, ping_interval=1000, process_request=http_handler)
 
     print(f"Visit http://[{host}]:{port}/ if using an IPv6 address or")
-    print(f"Visit http://{host}:{port}/ if using and IPv4 adsress or alias.")           #TODO: Autodetect
+    print(f"Visit http://{host}:{port}/ if using an IPv4 address or alias.")           #TODO: Autodetect
 
     asyncio.get_event_loop().run_until_complete(start_server)
     asyncio.ensure_future(input_grabber())
     asyncio.ensure_future(input_sender())
-    asyncio.get_event_loop().run_until_complete(screenshotter(rm_model))
+    asyncio.get_event_loop().run_until_complete(screenshotter(rm_model, rm_host, rm_user))
     asyncio.get_event_loop().run_forever(debug = True)
 
 
