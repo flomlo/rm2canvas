@@ -52,7 +52,8 @@ async def screenshotter(rm_model, rm_host='remarkable', rm_user='root'):
             else:
                 os.remove(filepath)
             await asyncio.sleep(1.5)
-        except:
+        except Exception as e:
+            print(f'retrying getting a screenshot as Exception occured: \n {e}')
             await asyncio.sleep(0.25)
 
 async def diff_detector(f1,f2):
@@ -60,7 +61,7 @@ async def diff_detector(f1,f2):
         return 1878*1404
     command = f"compare -metric AE {f1} {f2} /dev/null"
     compare = await asyncio.create_subprocess_shell(command, stderr=asyncio.subprocess.PIPE)
-    return int((await compare.communicate())[1])
+    return float((await compare.communicate())[1])
 
 
 #########################################################################
