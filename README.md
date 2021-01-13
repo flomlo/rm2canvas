@@ -57,7 +57,7 @@ Thank you ♥
 
 #### Working principles
 The reMarkable features a full Linux with root access. This means that we may just read the input device `/dev/input/event1` (or `event0` on rm1) via 
-the following command:ssh -o ConnectTimeout=2 {rm_user}@{rm_host} cat {input_device}. This information is parsed in `tipa.py` according to the rules described in the libremarkable wiki and send to the JavaScript frontend via the websocketInput. 
+the following command:`ssh -o ConnectTimeout=2 {rm_user}@{rm_host} cat {input_device}`. This information is parsed in `tipa.py` according to the rules described in the libremarkable wiki and send to the JavaScript frontend via the websocketInput. 
 There the input is drawn on a html canvas (and saved in an Array together with a timestamp).
 
 Concurrently a new screenshot is grabbed every few seconds and send (together with a timestamp `tsBg`) to the JavaScript frontend via the websocketBackground. There it triggers a transition to the newest screenshot as well as triggering the removal of all Canvas strokes older than that timestamp.
