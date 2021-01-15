@@ -34,6 +34,8 @@ var main = document.getElementById("main");
       bgOld = bg;
       bgOld.style = "position: absolute; top: 0px; left: 0px; transition: 250ms ease-in-out";
       bg = document.createElement('img');
+      bg.width = 1878;
+      bg.height = 1404;
       main.insertBefore(bg, bgOld);
       bg.src = imgfile;
       // on load, trigger transition an canvas redraw
@@ -80,7 +82,7 @@ var main = document.getElementById("main");
           ctx.lineWidth = 60;
           ctx.save();
           ctx.strokeStyle = 'linen';
-          ctx.globalAlpha = 0.2;
+          ctx.globalAlpha = 0.4;
           ctx.stroke();
           ctx.restore();
       };
