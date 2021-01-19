@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Remarkable Canvas Experiment</title>
+    <title>Remarkable Canvas Experiment: Press Enter to rotate, us browser zoom to fit to size</title>
     <meta charset="utf-8">
 </head>
 <body>
-  <div id='main' style="border: 1px solid #aaa; position: relative;">
+  <div id='main' style="width: autoborder: 1px solid #aaa; position: relative;">
     <img src="/images/bg.png" id="bg" ></img>
     <canvas id="canvas-overlay" style="/*width: 100%; height: 100%;*/ position: absolute; top: 0px; left: 0px"></canvas>
     <canvas id="canvas" style="/*width: 100%; height: 100%;*/ position: absolute; top: 0px; left: 0px"></canvas>
@@ -13,6 +13,7 @@
 <script>
  
 var main = document.getElementById("main");
+let orientation = 'landscape' // 'landscape' or 'portrait'
 
 /******************************************************
     HTML generating
@@ -34,7 +35,7 @@ var main = document.getElementById("main");
       bgOld = bg;
       bgOld.style = "position: absolute; top: 0px; left: 0px; transition: 250ms ease-in-out";
       bg = document.createElement('img');
-      bg.width = 1878;
+      bg.width = 1872;
       bg.height = 1404;
       main.insertBefore(bg, bgOld);
       bg.src = imgfile;
@@ -63,7 +64,7 @@ var main = document.getElementById("main");
   var MAX_PRESSURE = 4095
   // width, height in landscape as that is both native framebuffer and input format
   for (let cv of [canvas, canvasOverlay]) {
-    cv.width = 1878;
+    cv.width = 1872;
     cv.height = 1404; 
   };
 
@@ -133,9 +134,15 @@ var main = document.getElementById("main");
 
   document.addEventListener('keydown', logKey);
   function logKey(e) {
-      if (e.keyCode == 13) {
-          // enter for rotate
-          main.style.transform = 'rotate(270deg)'
+      if (e.keyCode == 13) { // enter for rotate
+          if (orientation == 'landscape') {
+            main.style.transform = 'rotate(270deg)';
+            main.style.transformOrigin = '1278 600';
+            orientation = 'portrait';
+          } else {
+            main.style.transform = 'rotate(0deg)';
+            orientation = 'landscape';
+          }  
       }
   }
 </script>
